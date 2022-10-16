@@ -4,47 +4,55 @@ function RomanizeMapping(text2)
 
   -- lower case mapping
   mylcase = {}
-  mylcase["E"] = "ʾ" -- hamza
+  mylcase["'"] = "ʾ" -- hamza
   mylcase["A"] = "ā"
-  mylcase["v"] = "ṯ" -- thaa
+  mylcase["v"] = "s̱" -- thaa
   mylcase["j"] = "j" -- "ǧ" -- jeem
   mylcase["H"] = "ḥ"
   mylcase["x"] = "ḵ" -- Khaa
-  mylcase["p"] = "ḏ" -- dhal
-  mylcase["c"] = "š" -- sheen
+  mylcase["*"] = "ẕ" -- dhal
+  mylcase["$"] = "š" -- sheen
   mylcase["S"] = "ṣ"
-  mylcase["D"] = "ḍ"
+  mylcase["D"] = "ẓ"
   mylcase["T"] = "ṭ"
-  mylcase["P"] = "ḏ̣" -- DHaa
-  mylcase["e"] = "ɛ" -- 3ayn
-  mylcase["g"] = "ġ" -- ghayn
-  mylcase["o"] = "ḧ" -- for taa marbuta in pausa non-construct
-  mylcase["O"] = "ẗ" -- for taa marbuta in pausa construct
+  mylcase["Z"] = "ẕ̣" -- DHaa
+  mylcase["!"] = "ɛ" -- 3ayn
+  mylcase["G"] = "ġ" -- ghayn
+  --mylcase["o"] = "ḧ" -- for taa marbuta in pausa non-construct
+  mylcase["E"] = "ē"
+  mylcase["O"] = "ō"
   mylcase["I"] = "ī"
   mylcase["U"] = "ū"
+  mylcase["c"] = "c"
+  mylcase["@"] = "ż" -- zh
+  mylcase["N"] = "ṅ" -- nun ghunnah
   mylcase["="] = "·" -- to insert middot explicitly. middot is automatically inserted before 'h' if digraph_en=true
 
   -- upper case mapping. use hash '#' before desired uppercase character
   myucase = {}
   myucase["E"] = "ʾ"
-  myucase["A"] = "Ā"
-  myucase["v"] = "Ṯ"
+  myucase["v"] = "S̱"
   myucase["j"] = "J" -- "Ǧ"
   myucase["H"] = "Ḥ"
   myucase["x"] = "Ḵ"
-  myucase["p"] = "Ḏ"
-  myucase["c"] = "Š"
+  myucase["*"] = "Ẕ"
+  myucase["$"] = "Š"
   myucase["S"] = "Ṣ"
-  myucase["D"] = "Ḍ"
+  myucase["D"] = "Ẓ"
   myucase["T"] = "Ṭ"
-  myucase["P"] = "Ḏ̣"
-  myucase["e"] = "Ɛ"
-  myucase["g"] = "Ġ"
-  myucase["I"] = "Ī"
-  myucase["U"] = "Ū"
+  myucase["Z"] = "Ẕ̣"
+  myucase["!"] = "Ɛ"
+  myucase["G"] = "Ġ"
   myucase["a"] = "A"
+  myucase["e"] = "E"
   myucase["i"] = "I"
+  myucase["o"] = "O"
   myucase["u"] = "U"
+  myucase["A"] = "Ā"
+  mylcase["E"] = "ē"
+  myucase["I"] = "Ī"
+  mylcase["O"] = "ō"
+  myucase["U"] = "Ū"
   myucase["b"] = "B"
   myucase["t"] = "T"
   myucase["d"] = "D"
@@ -60,20 +68,28 @@ function RomanizeMapping(text2)
   myucase["h"] = "H"
   myucase["w"] = "W"
   myucase["y"] = "Y"
+  myucase["c"] = "C"
+  myucase["@"] = "Ż" -- zh
+  myucase["N"] = "ṅ" -- nun ghunnah
 
   if digraph_en then
-    mylcase["v"] = "t" .. utf8.char(0x035f) .. "h"
-    myucase["v"] = "T" .. utf8.char(0x035f) .. "h"
-    mylcase["c"] = "s" .. utf8.char(0x035f) .. "h"
-    myucase["c"] = "S" .. utf8.char(0x035f) .. "h"
+    --mylcase["v"] = "t" .. utf8.char(0x035f) .. "h"
+    --myucase["v"] = "T" .. utf8.char(0x035f) .. "h"
+    mylcase["$"] = "s" .. utf8.char(0x035f) .. "h"
+    myucase["$"] = "S" .. utf8.char(0x035f) .. "h"
     mylcase["x"] = "k" .. utf8.char(0x035f) .. "h"
     myucase["x"] = "K" .. utf8.char(0x035f) .. "h"
-    mylcase["g"] = "g" .. utf8.char(0x035f) .. "h"
-    myucase["g"] = "G" .. utf8.char(0x035f) .. "h"
-    mylcase["p"] = "d" .. utf8.char(0x035f) .. "h"
-    myucase["p"] = "D" .. utf8.char(0x035f) .. "h"
-    mylcase["P"] = "d" .. utf8.char(0x035f) ..  utf8.char(0x0323) .. "h"
-    myucase["P"] = "D" .. utf8.char(0x035f) ..  utf8.char(0x0323) .. "h"
+    mylcase["G"] = "g" .. utf8.char(0x035f) .. "h"
+    myucase["G"] = "G" .. utf8.char(0x035f) .. "h"
+    --mylcase["p"] = "d" .. utf8.char(0x035f) .. "h"
+    --myucase["p"] = "D" .. utf8.char(0x035f) .. "h"
+    --mylcase["P"] = "d" .. utf8.char(0x035f) ..  utf8.char(0x0323) .. "h"
+    --myucase["P"] = "D" .. utf8.char(0x035f) ..  utf8.char(0x0323) .. "h"
+    mylcase["c"] = "c" .. utf8.char(0x035f) .. "h"
+    myucase["c"] = "C" .. utf8.char(0x035f) .. "h"
+    mylcase["@"] = "z" .. utf8.char(0x035f) .. "h"-- zh
+    myucase["@"] = "Z" .. utf8.char(0x035f) .. "h"-- zh
+
     --mylcase["P"] = "d͟͏̣h"
     --myucase["P"] = "D͟͏̣h"
 
