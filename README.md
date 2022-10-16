@@ -1,5 +1,7 @@
 # A digital edition of Jones' Persian Grammar 9th edition
 
+Only one page typeset. Published here: https://adamiturabi.github.io/persian-jones/of-the-nouns-%D8%A7%D8%B3%D9%92%D9%85%D8%A7.html
+
 ## Install software prerequisites
 
 (For Ubuntu and derivatives)
